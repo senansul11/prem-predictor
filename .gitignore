@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+data/raw/
+data/processed/
+.ipynb_checkpoints/
+desktop.ini
+
+# original third-party season CSVs (re-downloadable; kept out of the repo)
+/data/*.csv
+space_build/
+
+# local working notes and tools (kept on disk, not published)
+/plan.md
+/CLAUDE.md
+/PROJECT_SPEC.md
+/docs/
+.claude/

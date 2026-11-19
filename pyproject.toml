@@ -1,0 +1,42 @@
+[project]
+name = "plpredictor"
+version = "0.1.0"
+description = "Premier League match + season predictor (Dixon-Coles, Monte Carlo, Streamlit)"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "scipy>=1.12",
+    "scikit-learn>=1.4",
+    "xgboost>=2.0",
+    "pyarrow>=15",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+    "streamlit>=1.35",
+    "plotly>=5.20",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests", "app"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/**" = ["E501"]  # long UI text strings

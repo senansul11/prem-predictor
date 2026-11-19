@@ -1,0 +1,12 @@
+{
+  "n": 1999,
+  "model_mean_total_goals": 2.868721438486481,
+  "actual_mean_total_goals": 2.9169584792396197,
+  "model_mean_p_over25": 0.540676105629813,
+  "market_mean_p_over25": 0.556811617729972,
+  "corr_over25_model_vs_market": 0.7713731492911663,
+  "corr_gd_model_vs_ah": 0.9419873234482129,
+  "mean_gd_model": 0.27359933392110486,
+  "mean_gd_market": 0.28489244622311155,
+  "mean_gd_actual": 0.2696348174087044
+}

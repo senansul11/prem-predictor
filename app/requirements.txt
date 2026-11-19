@@ -1,0 +1,8 @@
+# Dependencies for the hosted app (Streamlit Community Cloud reads this file because it sits next
+# to the app's entry point, Home.py). The daily refresh runs in GitHub Actions, not here.
+# Tested with: streamlit 1.67, pandas 3.1, numpy 2.5, scipy 1.18, plotly 7.1
+streamlit>=1.40
+pandas>=2.2
+numpy>=1.26
+scipy>=1.12
+plotly>=5.20

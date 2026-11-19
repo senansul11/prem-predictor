@@ -1,0 +1,77 @@
+name: refresh
+
+# Every morning: download new results and fixtures, check the data, re-run the predictions,
+# commit the new prediction files. The hosted app (Streamlit Community Cloud) redeploys
+# automatically when this commit lands. Can also be started by hand.
+on:
+  schedule:
+    - cron: "0 7 * * *"   # 07:00 UTC daily
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-run even if nothing changed"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # commit the refreshed prediction files
+  issues: write     # open an issue if the data checks fail
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Check the API key is set
+        env:
+          KEY: ${{ secrets.FOOTBALLDATA_IO_API_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::error::Add the FOOTBALLDATA_IO_API_KEY secret (Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+
+      - name: Refresh data and predictions
+        id: refresh
+        env:
+          FOOTBALLDATA_IO_API_KEY: ${{ secrets.FOOTBALLDATA_IO_API_KEY }}
+        run: python -m plpredictor.pipeline refresh ${{ inputs.force && '--force' || '' }}
+
+      - name: Commit new predictions
+        if: steps.refresh.outputs.changed == 'true'
+        run: |
+          git config user.name "prem-predictor-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/outputs
+          if git diff --cached --quiet; then
+            echo "No file changes to commit."
+          else
+            git commit -m "Refresh predictions (data as of ${{ steps.refresh.outputs.data_as_of }})"
+            git push
+          fi
+
+      - name: Open an issue if the checks failed
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create refresh-failed --color B60205 --description "Daily refresh failed" 2>/dev/null || true
+          if [ -z "$(gh issue list --label refresh-failed --state open --json number --jq '.[0].number')" ]; then
+            gh issue create --label refresh-failed \
+              --title "Daily refresh failed: nothing was published" \
+              --body "The refresh stopped, most likely because a data check failed. The app is still showing the last good predictions. See the run log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          fi
