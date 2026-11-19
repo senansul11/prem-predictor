@@ -87,7 +87,8 @@ uv pip install --python .venv/bin/python -e ".[dev]"        # Windows: .venv\Scr
 ```
 
 To rebuild the predictions from scratch (downloads the CSVs; fixtures need a free
-[footballdata.io](https://footballdata.io) key in a `.env` file, see `.env.example`):
+[footballdata.io](https://footballdata.io) key in a `.env` file containing the line
+`FOOTBALLDATA_IO_API_KEY=your_key`):
 
 ```bash
 .venv/bin/python -m plpredictor.pipeline refresh --force

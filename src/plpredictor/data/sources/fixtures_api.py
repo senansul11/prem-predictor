@@ -34,7 +34,10 @@ def get_api_key() -> str:
     load_dotenv(ENV_PATH)
     key = os.getenv("FOOTBALLDATA_IO_API_KEY")
     if not key:
-        raise MissingKeyError("Add FOOTBALLDATA_IO_API_KEY to the .env file (see .env.example).")
+        raise MissingKeyError(
+            "Set FOOTBALLDATA_IO_API_KEY in a .env file in the project root, "
+            "or as an environment variable."
+        )
     return key
 
 
