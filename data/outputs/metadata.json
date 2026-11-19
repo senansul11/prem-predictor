@@ -8,7 +8,7 @@
   "parameter_uncertainty": true,
   "n_parameter_draws": 200,
   "seed": 42,
-  "sim_seconds": 1.35,
+  "sim_seconds": 1.22,
   "model": "dixon-coles",
   "model_config": {
     "xi": 0.003,
@@ -21,5 +21,5 @@
     "team_home_ridge": 0.0,
     "max_goals": 10
   },
-  "generated_at": "2026-11-19T00:37:51+00:00"
+  "generated_at": "2026-11-19T01:08:59+00:00"
 }
