@@ -3,12 +3,12 @@
   "season": "2026-27",
   "matches_played": 100,
   "fixtures_remaining": 280,
-  "fixtures_with_dates": 200,
+  "fixtures_with_dates": 194,
   "n_sims": 10000,
   "parameter_uncertainty": true,
   "n_parameter_draws": 200,
   "seed": 42,
-  "sim_seconds": 1.19,
+  "sim_seconds": 1.78,
   "model": "dixon-coles",
   "model_config": {
     "xi": 0.003,
@@ -21,5 +21,5 @@
     "team_home_ridge": 0.0,
     "max_goals": 10
   },
-  "generated_at": "2026-11-20T15:58:34+00:00"
+  "generated_at": "2026-11-21T15:10:38+00:00"
 }
