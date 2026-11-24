@@ -1,8 +1,8 @@
 {
   "hashes": {
-    "E0:2026": "d5da6601831a3c4e78a443d17771acf9cc264ada527a56f40832c23588bfffa5",
+    "E0:2026": "21d2b96792bd0bc8a324123ae68eaf60b981c5a016c538d086e8d8a5cbedd95a",
     "E1:2026": "1d3ffc5e2e07304f0f7c976bd5d322694c1dc23d69d73be2c8bdd47e8b5c969b",
-    "fixtures": "39e860ace5bbb66560b86df3ccad9590f70dab079abd5766e39d6cddf2a0a72e"
+    "fixtures": "559a78f0fd0e3b56da556e408a51a5da162f47321eb3dec3d79b3455c5d56bbd"
   },
-  "updated": "2026-11-23"
+  "updated": "2026-11-24"
 }

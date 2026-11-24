@@ -1,14 +1,14 @@
 {
-  "data_as_of": "2026-11-22",
+  "data_as_of": "2026-11-23",
   "season": "2026-27",
-  "matches_played": 109,
-  "fixtures_remaining": 271,
-  "fixtures_with_dates": 191,
+  "matches_played": 110,
+  "fixtures_remaining": 270,
+  "fixtures_with_dates": 190,
   "n_sims": 10000,
   "parameter_uncertainty": true,
   "n_parameter_draws": 200,
   "seed": 42,
-  "sim_seconds": 1.74,
+  "sim_seconds": 1.18,
   "model": "dixon-coles",
   "model_config": {
     "xi": 0.003,
@@ -21,5 +21,5 @@
     "team_home_ridge": 0.0,
     "max_goals": 10
   },
-  "generated_at": "2026-11-23T17:27:01+00:00"
+  "generated_at": "2026-11-24T18:43:13+00:00"
 }
